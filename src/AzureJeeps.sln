@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataGenerator", "DataGenerator\DataGenerator.csproj", "{F4082758-05B3-4009-823D-386E2BB1AB5A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{76A91A66-9BDD-4748-B669-AEB39959020E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.Tests", "Web.Tests\Web.Tests.csproj", "{B9A115A5-CB5A-42C7-A59B-64004B447A4B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PublishScripts", "PublishScripts", "{BF215754-1E67-4773-BE23-AA2F498754F7}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\AzureWebsitePublishModule.psm1 = PublishScripts\AzureWebsitePublishModule.psm1
+		PublishScripts\Publish-WebApplicationWebsite.ps1 = PublishScripts\Publish-WebApplicationWebsite.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configurations", "Configurations", "{EB17A953-4BB9-4DE9-AB7E-8E9A4A423C1A}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\Configurations\Web-WAWS-dev.json = PublishScripts\Configurations\Web-WAWS-dev.json
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{890479AD-3A2D-4428-B705-E05B0B85F731}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F4082758-05B3-4009-823D-386E2BB1AB5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4082758-05B3-4009-823D-386E2BB1AB5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4082758-05B3-4009-823D-386E2BB1AB5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4082758-05B3-4009-823D-386E2BB1AB5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76A91A66-9BDD-4748-B669-AEB39959020E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76A91A66-9BDD-4748-B669-AEB39959020E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76A91A66-9BDD-4748-B669-AEB39959020E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76A91A66-9BDD-4748-B669-AEB39959020E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9A115A5-CB5A-42C7-A59B-64004B447A4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9A115A5-CB5A-42C7-A59B-64004B447A4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9A115A5-CB5A-42C7-A59B-64004B447A4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9A115A5-CB5A-42C7-A59B-64004B447A4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{890479AD-3A2D-4428-B705-E05B0B85F731}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{890479AD-3A2D-4428-B705-E05B0B85F731}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{890479AD-3A2D-4428-B705-E05B0B85F731}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{890479AD-3A2D-4428-B705-E05B0B85F731}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{EB17A953-4BB9-4DE9-AB7E-8E9A4A423C1A} = {BF215754-1E67-4773-BE23-AA2F498754F7}
+	EndGlobalSection
+EndGlobal
