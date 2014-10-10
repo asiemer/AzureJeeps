@@ -280,10 +280,6 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DataGenerator\DataGenerator.csproj">
-      <Project>{f4082758-05b3-4009-823d-386e2bb1ab5a}</Project>
-      <Name>DataGenerator</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Domain\Domain.csproj">
       <Project>{890479ad-3a2d-4428-b705-e05b0b85f731}</Project>
       <Name>Domain</Name>

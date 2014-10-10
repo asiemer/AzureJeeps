@@ -107,7 +107,7 @@ namespace Domain
 
         private string GetImage(string color, string type, string package)
         {
-            return type.Replace(" ", "-") + "-" + package.Replace(" ", "-") + "-" + color.Replace(" ", "-") + ".jpg";
+            return type.Replace(" ", "-") + "-" + package.Replace(" ", "-") + "-" + color.Replace(" ", "-") + ".png";
         }
 
         private Dealer GetDealer()
