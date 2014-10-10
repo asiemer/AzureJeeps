@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 
-namespace DataGenerator
+namespace Domain
 {
     public class Listing
     {

@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using RedDog.Search;
-using RedDog.Search.Http;
-using RedDog.Search.Model;
+using Domain;
 
 namespace DataGenerator
 {
@@ -39,7 +35,7 @@ namespace DataGenerator
 
             //search
             bool runDbQuery = false;
-            bool runSearch = true;
+            bool runSearch = false;
 
             //generate X number of listings locally
             int numberOfListingsToCreate = 100;

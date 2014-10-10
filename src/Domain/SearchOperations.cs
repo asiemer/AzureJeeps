@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -6,7 +6,7 @@ using RedDog.Search;
 using RedDog.Search.Http;
 using RedDog.Search.Model;
 
-namespace DataGenerator
+namespace Domain
 {
     public class SearchOperations
     {
@@ -83,7 +83,7 @@ namespace DataGenerator
                 //rip through collection and make a batch of operations
                 foreach (Listing l in listings)
                 {
-                    var flatOptions = string.Concat(l.Options.Select(o => o.Name));
+                    var flatOptions = string.Concat((IEnumerable<string>) l.Options.Select(o => o.Name));
                     var op = new IndexOperation(IndexOperationType.Upload, "Id", l.Id.ToString())
                         .WithProperty("Color", l.Color)
                         .WithProperty("Options", flatOptions)
@@ -122,7 +122,7 @@ namespace DataGenerator
                     for (int i = 0; i < 10; i++)
                     {
                         Console.WriteLine();
-                        Console.WriteLine(String.Format("\tScore: {0} ", results[i].Score));
+                        Console.WriteLine(String.Format((string) "\tScore: {0} ", (object) results[i].Score));
                         foreach (var prop in results[i].Properties)
                         {
                             Console.WriteLine("\t" + prop.Key + " " + prop.Value);

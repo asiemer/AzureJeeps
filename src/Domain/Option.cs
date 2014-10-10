@@ -1,4 +1,4 @@
-﻿namespace DataGenerator
+﻿namespace Domain
 {
     public class Option
     {

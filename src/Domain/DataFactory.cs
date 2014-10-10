@@ -1,7 +1,7 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
-namespace DataGenerator
+namespace Domain
 {
     public class DataFactory
     {

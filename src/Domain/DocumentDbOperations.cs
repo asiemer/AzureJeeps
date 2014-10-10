@@ -1,17 +1,29 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Azure.Documents;
 using Microsoft.Azure.Documents.Client;
 using Microsoft.Azure.Documents.Linq;
 
-namespace DataGenerator
+namespace Domain
 {
     public class DocumentDbOperations
     {
         public DocumentDbOperations()
         {
             
+        }
+
+        public static async Task<Listing[]> GetAllJeeps()
+        {
+            var client = GetClient();
+            var collection = await GetCollection(client, Keys.ListingsDbName, Keys.ListingDbCollectionName);
+
+            string sql = String.Format("SELECT * FROM {0}", Keys.ListingDbCollectionName);
+            var jeepsQuery = client.CreateDocumentQuery<Listing>(collection.SelfLink, sql).ToArray();
+            var jeeps = jeepsQuery.ToArray();
+
+            return jeeps;
         }
 
         public static async Task<Listing[]> GetHardTops()
@@ -107,7 +119,7 @@ namespace DataGenerator
             Database database = await RetrieveOrCreateDatabaseAsync(Keys.ListingsDbName);
 
             Console.Write("Self link for new database: ");
-            Console.WriteLine(database.SelfLink);
+            Console.WriteLine((string) database.SelfLink);
 
             DocumentCollection documentCollection = await RetrieveOrCreateCollectionAsync(database.SelfLink, Keys.ListingDbCollectionName);
 
