@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using RedDog.Search;
 using RedDog.Search.Http;
@@ -39,11 +40,28 @@ namespace Domain
             {
                 var newIndex = new Index(Keys.ListingsServiceIndexName)
                    .WithStringField("Id", opt => opt.IsKey().IsRetrievable())
-                   .WithStringField("Color", opt => opt.IsSearchable().IsSortable().IsFilterable().IsRetrievable())
-                   .WithStringField("Package", opt => opt.IsSearchable().IsFilterable().IsRetrievable())
+                   .WithStringField("Color", opt => opt.IsSearchable().IsSortable().IsFilterable().IsRetrievable().IsFacetable())
+                   .WithStringField("Package", opt => opt.IsSearchable().IsFilterable().IsRetrievable().IsFacetable())
                    .WithStringField("Options", opt => opt.IsSearchable().IsFilterable().IsRetrievable())
-                   .WithStringField("Type", opt => opt.IsSearchable().IsFilterable().IsRetrievable())
+                   .WithStringField("Type", opt => opt.IsSearchable().IsFilterable().IsRetrievable().IsFacetable())
                    .WithStringField("Image", opt => opt.IsRetrievable());
+
+                //var sp = new ScoringProfile();
+                //sp.Name = "ByTypeAndPackage";
+                //sp.Text = new ScoringProfileText();
+                //sp.Text.Weights = new Dictionary<string, double>();
+                //sp.Text.Weights.Add("Type", 1.5);
+                //sp.Text.Weights.Add("Package", 1.5);
+                //newIndex.ScoringProfiles.Add(sp);
+
+                //var colorsSp = new ScoringProfile();
+                //colorsSp.Name = "ByColor";
+                //colorsSp.Text = new ScoringProfileText();
+                //colorsSp.Text.Weights = new Dictionary<string,double>();
+                //colorsSp.Text.Weights.Add("Color",2);
+                //newIndex.ScoringProfiles.Add(colorsSp);
+
+
                 index = await managementClient.CreateIndexAsync(newIndex);
 
                 if (!index.IsSuccess)
@@ -103,14 +121,32 @@ namespace Domain
         }
         public static async Task<IApiResponse<SearchQueryResult>> Search(string search)
         {
+            return await Search(search, null);
+        }
+
+        public static async Task<IApiResponse<SearchQueryResult>> Search(string search, string[] facets)
+        {
             var conn = ApiConnection.Create(Keys.ListingsServiceUrl, Keys.ListingsServiceKey);
             var queryClient = new IndexQueryClient(conn);
             var query = new SearchQuery(search)
                 .Count(true)
                 .Select("Id,Color,Options,Type,Package,Image")
-                .OrderBy("Color")
-                .Highlight("Package");
+                .OrderBy("Color");
+
+            if (facets != null)
+            {
+                StringBuilder facet = new StringBuilder();
+                foreach (string f in facets)
+                {
+                    facet.Append(f + ",");
+                }
+                string facetResult = facet.ToString();
+                //trim trailing comma
+                facetResult = facetResult.Substring(0, facetResult.Count() - 1);
+                query.Facet(facetResult);
+            }
             var searchResults = await queryClient.SearchAsync(Keys.ListingsServiceIndexName, query);
+
             return searchResults;
         }
 

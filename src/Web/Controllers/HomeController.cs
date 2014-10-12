@@ -13,8 +13,8 @@ namespace Web.Controllers
         {
             ViewBag.Title = "Home Page";
         
-            //var results = await DocumentDbOperations.GetAllJeeps();
-            Listing[] results = await ReadJeeps();
+            var results = await DocumentDbOperations.GetAllJeeps();
+            //Listing[] results = await ReadJeeps();
 
             //WriteJeeps(results);
 

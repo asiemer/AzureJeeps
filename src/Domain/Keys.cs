@@ -9,7 +9,7 @@ namespace Domain
 
         public static string ListingsServiceUrl = "azurejeeps";
         public static string ListingsServiceName = "azurejeeps";
-        public static string ListingsServiceKey = "73327-dwyLwSFESGHJx6ibA7yb9e+5syHB02eb";
+        public static string ListingsServiceKey = "B6AA737BCF57595D0DCF8DDBFC13EB4D";
         public static string ListingsServiceIndexName = "listingsindex";
     }
 }

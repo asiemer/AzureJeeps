@@ -15,7 +15,11 @@
             @{
                 foreach (Listing l in ViewBag.Jeeps)
                 {
-                    <div class="col-md-3"><img style="width:200px;" src="/images/@l.Image" /></div>
+                    <div style="text-align: center;"  class="col-md-3">
+                        <img style="width:200px;" src="/images/@l.Image" /><br/>
+                        <b>@l.Type @l.Package</b><br/>
+                        @l.Color
+                    </div>
                 }
             }
         </div>

@@ -34,8 +34,8 @@ namespace DataGenerator
             bool generateIndex = false;
 
             //search
-            bool runDbQuery = false;
-            bool runSearch = false;
+            bool runDbQuery = true;
+            bool runSearch = true;
 
             //generate X number of listings locally
             int numberOfListingsToCreate = 100;
@@ -96,7 +96,15 @@ namespace DataGenerator
 
             if (runSearch)
             {
-                var search = await SearchOperations.Search("Rubicon hard firecracker red");
+                string[] facets = new[]
+                {
+                    "Type",
+                    "Package",
+                    "Color"
+                };
+
+                var search = await SearchOperations.Search("Wrangler Rubicon hard top firecracker red");
+                //var search = await SearchOperations.Search("Wrangler Rubicon hard top firecracker red", facets);
                 //var search = await SearchOperations.Search("Sport soft top ampd");
 
                 Console.WriteLine("Found " + search.Body.Count);
