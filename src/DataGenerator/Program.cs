@@ -34,8 +34,8 @@ namespace DataGenerator
             bool generateIndex = false;
 
             //search
-            bool runDbQuery = true;
-            bool runSearch = true;
+            bool runDbQuery = false;
+            bool runSearch = false;
 
             //generate X number of listings locally
             int numberOfListingsToCreate = 100;

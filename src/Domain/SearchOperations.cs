@@ -46,13 +46,13 @@ namespace Domain
                    .WithStringField("Type", opt => opt.IsSearchable().IsFilterable().IsRetrievable().IsFacetable())
                    .WithStringField("Image", opt => opt.IsRetrievable());
 
-                //var sp = new ScoringProfile();
-                //sp.Name = "ByTypeAndPackage";
-                //sp.Text = new ScoringProfileText();
-                //sp.Text.Weights = new Dictionary<string, double>();
-                //sp.Text.Weights.Add("Type", 1.5);
-                //sp.Text.Weights.Add("Package", 1.5);
-                //newIndex.ScoringProfiles.Add(sp);
+                var sp = new ScoringProfile();
+                sp.Name = "ByTypeAndPackage";
+                sp.Text = new ScoringProfileText();
+                sp.Text.Weights = new Dictionary<string, double>();
+                sp.Text.Weights.Add("Type", 1.5);
+                sp.Text.Weights.Add("Package", 1.5);
+                newIndex.ScoringProfiles.Add(sp);
 
                 //var colorsSp = new ScoringProfile();
                 //colorsSp.Name = "ByColor";

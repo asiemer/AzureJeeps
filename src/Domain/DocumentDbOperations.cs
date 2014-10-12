@@ -18,7 +18,6 @@ namespace Domain
         {
             var client = GetClient();
             var collection = await GetCollection(client, Keys.ListingsDbName, Keys.ListingDbCollectionName);
-
             string sql = String.Format("SELECT * FROM {0}", Keys.ListingDbCollectionName);
             var jeepsQuery = client.CreateDocumentQuery<Listing>(collection.SelfLink, sql).ToArray();
             var jeeps = jeepsQuery.ToArray();
