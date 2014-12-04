@@ -31,7 +31,7 @@ namespace DataGenerator
             
             //creates
             bool generateDocDb = false;
-            bool generateIndex = false;
+            bool generateIndex = true;
 
             //search
             bool runDbQuery = false;
